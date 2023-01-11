@@ -1,28 +1,29 @@
-
-
-
-
-
-  import styles from './index.module.css';
+import { GetStaticProps } from 'next';
+import styles from './index.module.css';
   
-
-/* eslint-disable-next-line */
 export interface AboutProps {
+  name: string;
 }
 
 
 
-export function About(props: AboutProps) {
+export function About({ name }: AboutProps) {
   return (
     <div className={styles['container']}>
-      
-      <h1>Welcome to About!</h1>
-      
+      <h1>Welcome, {name}</h1>
     </div>
   );
-};
+}
 
+
+
+
+export const getStaticProps: GetStaticProps<AboutProps> = async (context) => {
+  return {
+    props: {
+      name: "Adriano",
+    },
+  }
+}
 
 export default About;
-
-
