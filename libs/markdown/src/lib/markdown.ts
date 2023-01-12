@@ -5,6 +5,8 @@ import matter from "gray-matter";
 // ts-ignore
 import { join } from "path";
 
+import { serialize } from "next-mdx-remote/serialize";
+
 export const getParsedFileContentBySlug = (
     fileName: string, 
     postsPath: string
@@ -22,6 +24,6 @@ export const getParsedFileContentBySlug = (
     };
 }
 
-export function renderMarkdown(): string {
-    return 'markdown';
+export function renderMarkdown(markdownContent: string) {
+    return serialize(markdownContent || "");
 }
