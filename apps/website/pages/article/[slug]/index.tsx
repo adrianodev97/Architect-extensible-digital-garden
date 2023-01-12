@@ -2,6 +2,7 @@ import { readdirSync } from "fs";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { join } from "path";
 import { ParsedUrlQuery } from "querystring";
+import { getParsedFileContentBySlug, renderMarkdown } from "@website/markdown";
 
 export interface ArticleProps extends ParsedUrlQuery{
   slug: string;
@@ -9,23 +10,38 @@ export interface ArticleProps extends ParsedUrlQuery{
 
 const POSTS_PATH = join(process.cwd(), "_articles")
 
-export function Article(props: ArticleProps) {
+export function Article({ frontMatter }) {
   return (
-    <div>
-      <h1>Visiting {props.slug}</h1>
+    <div className="m-6">
+      <article className="prose prose-lg"> 
+        <h1>{ frontMatter.title }</h1>
+        <div>by { frontMatter.author.name }</div>
+      </article>
     </div>
   );
 };
 
+// ts-ignore
 export const getStaticProps: GetStaticProps<ArticleProps> = async ({ 
   params, 
 } : {
   params: ArticleProps;
 }) => {
 
+  // 1. parse the content of our markdown and separate it into frontmatter and content
+  const articleMarkdownContent = getParsedFileContentBySlug(
+    params.slug, 
+    POSTS_PATH
+  );
+
+
+  // 2. convert markdown content => HTML
+  const renderHTML = renderMarkdown();
+
+
   return {
     props: {
-      slug: params.slug,
+      frontMatter: articleMarkdownContent.frontMatter,
     },
   };
 };
