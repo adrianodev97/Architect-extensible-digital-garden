@@ -5,6 +5,7 @@ import { ParsedUrlQuery } from "querystring";
 import { getParsedFileContentBySlug, renderMarkdown } from "@website/markdown";
 import { MDXRemote } from "next-mdx-remote";
 import { Youtube } from "../../../../../libs/shared/mdx-elements/src/lib/youtube/youtube";
+import { CustomLink } from "../../../../../libs/shared/mdx-elements/src/lib/custom-link/custom-link";
 
 
 
@@ -14,6 +15,7 @@ export interface ArticleProps extends ParsedUrlQuery{
 
 const mdxElements = {
   Youtube,
+  a: CustomLink,
 }
 
 const POSTS_PATH = join(process.cwd(), "_articles")
