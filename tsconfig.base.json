@@ -21,6 +21,9 @@
     "paths": {
       "@website/markdown": [
         "libs/markdown/src/index.ts"
+      ],
+      "@website/shared/mdx-elements": [
+        "libs/shared/mdx-elements/src/index.ts"
       ]
     }
   },
