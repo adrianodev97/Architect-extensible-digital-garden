@@ -4,9 +4,9 @@ import { join } from "path";
 import { ParsedUrlQuery } from "querystring";
 import { getParsedFileContentBySlug, renderMarkdown } from "@website/markdown";
 import { MDXRemote } from "next-mdx-remote";
-import { Youtube } from "../../../../../libs/shared/mdx-elements/src/lib/youtube/youtube";
-import { CustomLink } from "../../../../../libs/shared/mdx-elements/src/lib/custom-link/custom-link";
-
+// import { Youtube } from "../../../../../libs/shared/mdx-elements/src/lib/youtube/youtube";
+// import { CustomLink } from "../../../../../libs/shared/mdx-elements/src/lib/custom-link/custom-link";
+import dynamic from "next/dynamic";
 
 
 export interface ArticleProps extends ParsedUrlQuery{
@@ -14,8 +14,17 @@ export interface ArticleProps extends ParsedUrlQuery{
 }
 
 const mdxElements = {
-  Youtube,
-  a: CustomLink,
+  // Youtube,
+  // a: CustomLink,
+
+  Youtube: dynamic(async () => { 
+    const components = await import("@website/shared/mdx-elements");
+    return components.Youtube;
+  }),
+  
+  // Youtube: dynamic(async () => { 
+  //   return await import("@website/shared/mdx-elements/youtube/youtube");
+  // }),
 }
 
 const POSTS_PATH = join(process.cwd(), "_articles")

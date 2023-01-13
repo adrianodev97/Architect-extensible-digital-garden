@@ -24,6 +24,9 @@
       ],
       "@website/shared/mdx-elements": [
         "libs/shared/mdx-elements/src/index.ts"
+      ],
+      "@website/shared/mdx-elements/*": [
+        "libs/shared/mdx-elements/src/lib/*"
       ]
     }
   },
