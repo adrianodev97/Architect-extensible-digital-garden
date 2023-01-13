@@ -21,13 +21,13 @@ const mdxElements = {
     const components = await import("@website/shared/mdx-elements");
     return components.Youtube;
   }),
-  
-  // Youtube: dynamic(async () => { 
-  //   return await import("@website/shared/mdx-elements/youtube/youtube");
-  // }),
+
+  // Youtube: dynamic( 
+  //   () => import("@website/shared/mdx-elements/youtube/youtube")
+  // ),
 }
 
-const POSTS_PATH = join(process.cwd(), "_articles")
+const POSTS_PATH = join(process.cwd(), "_articles" /*process.env.articleMarkdownPath*/);
 
 export function Article({ frontMatter, html }) {
   return (
