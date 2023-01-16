@@ -43,7 +43,7 @@ export function Article({ frontMatter, html }) {
 };
 
 // ts-ignore
-export const getStaticProps: GetStaticProps<ArticleProps> = async ({ 
+export const getStaticProps: GetStaticProps<{[key: string]: any}> = async ({ 
   params, 
 } : {
   params: ArticleProps;
