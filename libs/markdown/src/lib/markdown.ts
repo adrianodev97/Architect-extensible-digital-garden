@@ -7,6 +7,8 @@ import { join } from "path";
 
 import { serialize } from "next-mdx-remote/serialize";
 
+console.log("test")
+
 export const getParsedFileContentBySlug = (
     fileName: string, 
     postsPath: string
