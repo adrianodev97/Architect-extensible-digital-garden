@@ -5,7 +5,7 @@ const  { createGlobPatternsForDependencies } = require("@nrwl/next/tailwind")
 module.exports = {
   // mode: "jit",
   purge: [
-    join(__dirname, 'src/**/*.{js,ts,jsx,tsx'),
+    join(__dirname, '{src,pages,components}/**/*!(*.stories|*.spec).{ts,tsx,html}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   darkMode: false, // or 'media' or 'class'
