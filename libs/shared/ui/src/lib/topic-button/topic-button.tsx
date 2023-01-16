@@ -14,7 +14,7 @@ export function TopicButton(props: TopicButtonProps) {
       const cleanedSvgName = props.topicName
         .replace(/[^a-zA-Z0-9]/g, '')
         .toLocaleLowerCase();
-      const topicSvgIcon = await import(`./${cleanedSvgName}.svg`);
+      const topicSvgIcon = await import(`./${cleanedSvgName}.png`);
       setIcon(topicSvgIcon.default);
     };
     fetchData();
@@ -32,11 +32,11 @@ export function TopicButton(props: TopicButtonProps) {
 
   return (
     <div
-      className="bg-white pl-4 rounded-lg shadow flex max-w-md min-w-max hover:shadow-md transition-shadow"
+      className="bg-white pl-4 rounded-lg shadow flex max-w-sm min-w-max hover:shadow-md transition-shadow"
       onClick={onClickHandler}
     >
       <img src={icon} alt="" className="w-12" />
-      <div className="p-5">
+      <div className="pl-4">
         <h2 className="font-bold text-4xl">{props.topicName}</h2>
       </div>
     </div>
